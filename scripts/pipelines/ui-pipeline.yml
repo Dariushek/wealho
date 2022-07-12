@@ -1,24 +1,35 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - master
 
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  project: './src/Wealho.WebApp'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  tag: '$(Build.SourceVersion)'
+
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: DotNetCoreCLI@2
+  name: 'restore'
+  inputs:
+    command: 'restore'
+    projects: $(project)
+    feedsToUse: 'select'
+  
+- task: DotNetCoreCLI@2
+  name: 'build' 
+  inputs:
+    command: 'build'
+    projects: '$(project)/Wealho.WebApp.csproj'
+    arguments: '--no-restore'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-
-
-# Docker
-# Build a Docker image
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+- task: Docker@2
+  name: 'publish_container'
+  inputs:
+    containerRegistry: 'docker hub'
+    repository: 'dariuszek/wealho-ui'
+    command: 'buildAndPush'
+    Dockerfile: '$(project)/Dockerfile'
+    tags: "latest"
