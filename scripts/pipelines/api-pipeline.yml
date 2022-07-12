@@ -32,13 +32,6 @@ steps:
     projects: '$(project)/Wealho.WebApi.csproj'
 
 - task: Docker@2
-  inputs:
-    containerRegistry: 'docker hub'
-    repository: 'dariuszek/wealho-api'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
-    tags: 'aaa'
-- task: Docker@2
   name: 'publish_container'
   inputs:
     containerRegistry: 'docker hub'
