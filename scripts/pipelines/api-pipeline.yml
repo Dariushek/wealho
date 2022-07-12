@@ -1,0 +1,48 @@
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  project: './src/Wealho.WebApi'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  tag: '$(Build.SourceVersion)'
+
+steps:
+- task: DotNetCoreCLI@2
+  name: 'restore'
+  inputs:
+    command: 'restore'
+    projects: $(project)
+    feedsToUse: 'select'
+  
+- task: DotNetCoreCLI@2
+  name: 'build' 
+  inputs:
+    command: 'build'
+    projects: '$(project)/Wealho.WebApi.csproj'
+    arguments: '--no-restore'
+
+- task: DotNetCoreCLI@2
+  name: 'test'
+  inputs:
+    command: 'test'
+    projects: '$(project)/Wealho.WebApi.csproj'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'docker hub'
+    repository: 'dariuszek/wealho-api'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    tags: 'aaa'
+- task: Docker@2
+  name: 'publish_container'
+  inputs:
+    containerRegistry: 'docker hub'
+    repository: 'dariuszek/wealho-api'
+    command: 'buildAndPush'
+    Dockerfile: '$(project)/Dockerfile'
+    tags: "latest"
