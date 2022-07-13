@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "Wealho.WebApi": {
+    "Wealho.Api": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

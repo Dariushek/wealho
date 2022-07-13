@@ -1,6 +1,6 @@
-﻿using Wealho.WebApi.Endpoints;
+﻿using Wealho.Endpoints;
 
-namespace Wealho.WebApi;
+namespace Wealho;
 
 public static class Configuration
 {

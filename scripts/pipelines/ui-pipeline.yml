@@ -5,7 +5,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  project: './src/Wealho.WebApp'
+  project: './src/Wealho.Ui'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   tag: '$(Build.SourceVersion)'
@@ -22,7 +22,7 @@ steps:
   name: 'build' 
   inputs:
     command: 'build'
-    projects: '$(project)/Wealho.WebApp.csproj'
+    projects: '$(project)/Wealho.Ui.csproj'
     arguments: '--no-restore'
 
 - task: Docker@2

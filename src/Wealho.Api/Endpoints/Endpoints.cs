@@ -1,4 +1,4 @@
-﻿namespace Wealho.WebApi.Endpoints;
+﻿namespace Wealho.Endpoints;
 
 public static class Endpoints
 {

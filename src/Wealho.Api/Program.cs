@@ -1,4 +1,4 @@
-using Wealho.WebApi;
+using Wealho;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
