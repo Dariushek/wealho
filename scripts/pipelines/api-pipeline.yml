@@ -5,7 +5,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  project: './src/Wealho.WebApi'
+  project: './src/Wealho.Api'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   tag: '$(Build.SourceVersion)'
@@ -22,14 +22,14 @@ steps:
   name: 'build' 
   inputs:
     command: 'build'
-    projects: '$(project)/Wealho.WebApi.csproj'
+    projects: '$(project)/Wealho.Api.csproj'
     arguments: '--no-restore'
 
 - task: DotNetCoreCLI@2
   name: 'test'
   inputs:
     command: 'test'
-    projects: '$(project)/Wealho.WebApi.csproj'
+    projects: '$(project)/Wealho.Api.csproj'
 
 - task: Docker@2
   name: 'publish_container'

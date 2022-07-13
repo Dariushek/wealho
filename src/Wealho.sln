@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wealho.WebApi", "Wealho.WebApi\Wealho.WebApi.csproj", "{B6D55162-DD7F-47F0-A701-5539B399DCBB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wealho.Api", "Wealho.Api\Wealho.Api.csproj", "{B6D55162-DD7F-47F0-A701-5539B399DCBB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wealho.WebApp", "Wealho.WebApp\Wealho.WebApp.csproj", "{285B864B-0177-4A12-B009-E94C177C66F5}"
 EndProject
