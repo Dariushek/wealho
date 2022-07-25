@@ -1,39 +1,53 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">Wealho.Ui</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
+﻿<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
+        <a role="button" class="navbar-burger @BurgerCssClass" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" @onclick="ToggleBurgerMenu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div class="navbar-menu @MenuCssClass">
+        <div class="navbar-start">
+            <NavLink class="navbar-item" href="\" Match="NavLinkMatch.All">
+                Home
+            </NavLink>
+
+            <NavLink class="navbar-item" href="counter">
+                Counter
+            </NavLink>
+
+            <NavLink class="navbar-item" href="fetchdata">
+                Fetch data
             </NavLink>
         </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary">
+                        <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light">
+                        Log in
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </div>
-    </nav>
-</div>
+    </div>
+</nav>
+
 
 @code {
-    private bool collapseNavMenu = true;
+    private bool showBurgerMenu = false;
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private string? BurgerCssClass => showBurgerMenu ? "is-active" : null;
+    private string? MenuCssClass => showBurgerMenu ? "is-active" : null;
 
-    private void ToggleNavMenu()
+    private void ToggleBurgerMenu()
     {
-        collapseNavMenu = !collapseNavMenu;
+        showBurgerMenu = !showBurgerMenu;
     }
+
 }
