@@ -1,0 +1,24 @@
+﻿@page "/binding-directives"
+@using System.Globalization
+<h2 class="subtitle">BindingDirectives</h2>
+<section>
+    <div>
+        <label>Name = @Name</label>
+        <input @bind-value="Name" @bind-value:event="oninput"/>
+    </div>
+    <div>
+        <label>Date of birth = @DateOfBirth?.ToString("MMMM d, yyyy")</label>
+        <input @bind-value="DateOfBirth" @bind-value:format="yyyy-MM-dd"/>
+    </div>
+    <div>
+        <label>Bank balance = @BankBalance</label>
+        <input @bind-value=BankBalance @bind-value:culture=Turkish/>
+    </div>
+</section>
+
+@code {
+    private CultureInfo Turkish = CultureInfo.GetCultureInfo("tr-TR");
+    private string Name;
+    private DateTime? DateOfBirth;
+    private decimal? BankBalance;
+}
