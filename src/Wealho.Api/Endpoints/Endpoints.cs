@@ -24,7 +24,7 @@ public static class Endpoints
             .WithName("GetWeatherForecast");
     }
 
-    private record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
+    private record WeatherForecast(DateTime Date, int TemperatureC, string Summary)
     {
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
     }
